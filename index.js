@@ -58,14 +58,14 @@ async function run() {
 
         app.get('/myreview', async (req, res) => {
             const query = {}
-            const cursor = reviewCollection.find(query).sort({x:-1});
+            const cursor = reviewCollection.find(query).sort({time:-1});
             const reviews = await cursor.toArray();
             res.send(reviews);
         });
         app.get('/myreview/:id', async (req, res) => {
             const id = req.params.id;
             const query = { id: id };
-            const cursor = reviewCollection.find(query).sort({x:-1});
+            const cursor = reviewCollection.find(query).sort({time:-1});
             const reviews = await cursor.toArray();
             res.send(reviews);
         });
